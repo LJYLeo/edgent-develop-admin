@@ -1,4 +1,4 @@
-package org.apache.edgent.edgentsamplesadmin;
+package edgent.samples.admin;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
