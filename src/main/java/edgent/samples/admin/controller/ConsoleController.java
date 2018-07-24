@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-// @RequestMapping("/console")
+@RequestMapping("/console")
 public class ConsoleController {
 
-    @RequestMapping("/console")
+    @RequestMapping("")
     // @ResponseBody
     public String index() {
         return "index";

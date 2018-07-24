@@ -1,4 +1,4 @@
-option = {
+var option = {
     title: {
         text: '折线图堆叠'
     },
@@ -6,7 +6,7 @@ option = {
         trigger: 'axis'
     },
     legend: {
-        data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+        data: ['邮件营销', '联盟广告', '视频广告']
     },
     grid: {
         left: '3%',
@@ -45,23 +45,36 @@ option = {
             type: 'line',
             stack: '总量',
             data: [150, 232, 201, 154, 190, 330, 410]
-        },
-        {
-            name: '直接访问',
-            type: 'line',
-            stack: '总量',
-            data: [320, 332, 301, 334, 390, 330, 320]
-        },
-        {
-            name: '搜索引擎',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
         }
     ]
 };
 
 $(function () {
+
+    $.ajaxSetup({
+        async: false
+    });
+
+    var data;
+    $.get("/service/dataPerHour", function (resp) {
+        data = resp;
+    }, "json");
+
+    var timeArray = [];
+    var valueArray = [];
+    $.each(data, function (index, o) {
+        timeArray.push(index);
+        valueArray.push(o);
+    });
+
+    option.xAxis.data = timeArray;
+    option.series = {
+        name: "蒸发量",
+        type: 'line',
+        stack: '总量',
+        data: valueArray
+    };
+
     var dom = $("#container")[0];
     var myChart = echarts.init(dom);
     myChart.setOption(option, true);
