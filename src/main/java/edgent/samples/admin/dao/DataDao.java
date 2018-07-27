@@ -36,4 +36,18 @@ public class DataDao {
 
     }
 
+    public Map<String, Float> listDataBetweenTime(String stationName, String property, String start, String end) {
+
+        Map<String, Float> resultMap = new LinkedHashMap<>();
+        StringBuilder sql = new StringBuilder("select * from " + property + "_data where time between ? and ? order by time");
+
+        List<Map<String, Object>> result = jdbcTemplate.queryForList(sql.toString(), start, end);
+        for (Map<String, Object> row : result) {
+            resultMap.put(row.get("time").toString().substring(11), Float.parseFloat(row.get(property).toString()));
+        }
+
+        return resultMap;
+
+    }
+
 }

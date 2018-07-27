@@ -56,7 +56,11 @@ $(function () {
     });
 
     var data;
-    $.get("/service/dataPerHour", function (resp) {
+    $.get("/service/dataLastDay", {
+        stationName: "lutaizi",
+        property: "level",
+        isNeedReload: true
+    }, function (resp) {
         data = resp;
     }, "json");
 

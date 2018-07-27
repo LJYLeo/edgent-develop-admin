@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Hello</title>
+        <title>动态监控</title>
 
         <script type="application/javascript" src="/static/jquery/jquery-3.3.1.min.js"></script>
         <script type="application/javascript" src="/static/echarts/echarts.min.js"></script>

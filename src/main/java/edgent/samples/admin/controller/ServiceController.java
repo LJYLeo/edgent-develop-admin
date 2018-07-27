@@ -1,5 +1,6 @@
 package edgent.samples.admin.controller;
 
+import edgent.samples.admin.service.DataPersistService;
 import edgent.samples.admin.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +15,20 @@ public class ServiceController {
     @Autowired
     private DataService dataService;
 
+    @Autowired
+    private DataPersistService dataPersistService;
+
     @RequestMapping("/dataPerHour")
     public Map<String, Float> getDataPerHour() {
 
         return dataService.getData();
+
+    }
+
+    @RequestMapping("/dataLastDay")
+    public Map<String, Float> getDataLastDay(String stationName, String property, boolean isNeedReload) {
+
+        return dataPersistService.getData(stationName, property, isNeedReload);
 
     }
 
