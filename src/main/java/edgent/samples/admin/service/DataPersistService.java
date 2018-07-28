@@ -20,19 +20,42 @@ public class DataPersistService {
 
     public Map<String, Float> getData(String stationName, String property, boolean isNeedReload) {
 
-        if (!isNeedReload) {
-            return dataPersistMap.get(stationName).get(property);
-        } else {
-            Map<String, Float> dataMap = queryDataLastDay(stationName, property);
-            dataPersistMap.put(stationName, new HashMap<>());
-            dataPersistMap.get(stationName).put(property, dataMap);
-            return dataMap;
+        if (isNeedReload) {
+            dataPersistMap = new HashMap<>();
         }
 
+        readDatabaseIfNull(stationName, property);
+        return dataPersistMap.get(stationName).get(property);
+
+    }
+
+    public int addData(String stationName, String property, String time, Float value) {
+        try {
+
+            readDatabaseIfNull(stationName, property);
+            dataPersistMap.get(stationName).get(property).put(time, value);
+            return 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
     }
 
     private Map<String, Float> queryDataLastDay(String stationName, String property) {
         return dataDao.listDataBetweenTime(stationName, property, TimeUtil.getLastEightTimeString(), TimeUtil.getNowString());
+    }
+
+    private void readDatabaseIfNull(String stationName, String property) {
+
+        if (dataPersistMap.get(stationName) == null) {
+            dataPersistMap.put(stationName, new HashMap<>());
+        }
+
+        if (dataPersistMap.get(stationName).get(property) == null) {
+            dataPersistMap.get(stationName).put(property, queryDataLastDay(stationName, property));
+        }
+
     }
 
 }

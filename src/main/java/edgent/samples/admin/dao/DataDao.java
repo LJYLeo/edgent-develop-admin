@@ -45,6 +45,7 @@ public class DataDao {
         for (Map<String, Object> row : result) {
             resultMap.put(row.get("time").toString().substring(11), Float.parseFloat(row.get(property).toString()));
         }
+        System.out.println("read database success!");
 
         return resultMap;
 

@@ -1,17 +1,19 @@
 var option = {
     title: {
-        text: '折线图堆叠'
+        subtext: 'Water Level Monitoring Chart',
+        // text: 'Smart Edge Computing Service Platform Monitoring System',
+        left: 'center'
     },
     tooltip: {
         trigger: 'axis'
     },
     legend: {
-        data: ['邮件营销', '联盟广告', '视频广告']
+        data: ['water level']
     },
     grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
+        left: '5%',
+        right: '5%',
+        bottom: '30%',
         containLabel: true
     },
     toolbox: {
@@ -22,64 +24,67 @@ var option = {
     xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        data: [],
+        name: 'Time'
     },
     yAxis: {
-        type: 'value'
+        type: 'value', min: 0,
+        name: 'Water Level(m)',
+        nameLocation: 'middle',
+        nameGap: 50
     },
-    series: [
-        {
-            name: '邮件营销',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-        },
-        {
-            name: '联盟广告',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-        },
-        {
-            name: '视频广告',
-            type: 'line',
-            stack: '总量',
-            data: [150, 232, 201, 154, 190, 330, 410]
-        }
-    ]
+    series: [{
+        data: [],
+        type: 'line',
+        name: "Water Level",
+        symbolSize: 8,
+        smooth: true
+    }]
 };
 
 $(function () {
 
-    $.ajaxSetup({
-        async: false
-    });
+    loadData("lutaizi", "level", false);
 
-    var data;
-    $.get("/service/dataLastDay", {
-        stationName: "lutaizi",
-        property: "level",
-        isNeedReload: true
-    }, function (resp) {
-        data = resp;
-    }, "json");
+});
 
+var handleData = function (data, minus, chartId) {
     var timeArray = [];
     var valueArray = [];
+    var min = 0;
     $.each(data, function (index, o) {
         timeArray.push(index);
         valueArray.push(o);
+        var floatO = parseFloat(o);
+        if (min == 0 || floatO < min) {
+            min = floatO;
+        }
     });
-
     option.xAxis.data = timeArray;
-    option.series = {
-        name: "蒸发量",
-        type: 'line',
-        stack: '总量',
-        data: valueArray
-    };
-
-    var dom = $("#container")[0];
+    option.yAxis.min = parseInt(min);
+    option.series[0].data = valueArray;
+    var dom = $("#" + chartId)[0];
     var myChart = echarts.init(dom);
     myChart.setOption(option, true);
-});
+};
+
+function loadData(stationName, property, isNeedReload) {
+    $.ajax({
+        type: "get",
+        url: "/service/dataLastDay",
+        data: {
+            stationName: stationName,
+            property: property,
+            isNeedReload: isNeedReload
+        },
+        dataType: "json",
+        success: function (res) {
+            handleData(res, 0.5, "container");
+        }
+    });
+}
+
+setInterval(function () {
+    console.log(111);
+    loadData("lutaizi", "level", false)
+}, 30000);

@@ -14,7 +14,13 @@
     </head>
 
     <body style="height: 100%">
-        <div id="container" style="height: 100%"></div>
+    <h1 style="text-align: center">Smart Edge Computing Service Platform Monitoring System</h1>
+        <div id="container" style="height: 100%">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </body>
 
 </html>

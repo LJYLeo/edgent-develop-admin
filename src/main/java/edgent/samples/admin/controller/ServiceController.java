@@ -4,6 +4,7 @@ import edgent.samples.admin.service.DataPersistService;
 import edgent.samples.admin.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -30,6 +31,11 @@ public class ServiceController {
 
         return dataPersistService.getData(stationName, property, isNeedReload);
 
+    }
+
+    @RequestMapping(value = "/addData", method = RequestMethod.POST)
+    public int addData(String stationName, String property, String time, Float value) {
+        return dataPersistService.addData(stationName, property, time, value);
     }
 
 }
