@@ -73,7 +73,7 @@ var evOption = {
     },
     yAxis: {
         type: 'value', min: 0,
-        name: 'Water Evaporation(mm)',
+        name: 'Evaporation(mm)',
         nameLocation: 'middle',
         nameGap: 50
     },
@@ -117,7 +117,7 @@ var rainFallOption = {
     },
     yAxis: {
         type: 'value', min: 0,
-        name: 'Water Rainfall(mm)',
+        name: 'Rainfall(mm)',
         nameLocation: 'middle',
         nameGap: 50
     },
@@ -162,7 +162,7 @@ var flowOption = {
     },
     yAxis: {
         type: 'value', min: 0,
-        name: 'Water Flow(m^3/s)',
+        name: 'Flow(m^3/s)',
         nameLocation: 'middle',
         nameGap: 50
     },
@@ -206,7 +206,7 @@ var runheRainFallOption = {
     },
     yAxis: {
         type: 'value', min: 0,
-        name: 'Water Rainfall(mm)',
+        name: 'Rainfall(mm)',
         nameLocation: 'middle',
         nameGap: 50
     },
@@ -251,7 +251,7 @@ var zhaoFlowOption = {
     },
     yAxis: {
         type: 'value', min: 0,
-        name: 'Water Flow(m^3/s)',
+        name: 'Flow(m^3/s)',
         nameLocation: 'middle',
         nameGap: 50
     },
