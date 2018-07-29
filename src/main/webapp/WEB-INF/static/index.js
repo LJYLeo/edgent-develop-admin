@@ -1,54 +1,28 @@
-var option = {
-    title: {
-        subtext: 'Water Level Monitoring Chart',
-        // text: 'Smart Edge Computing Service Platform Monitoring System',
-        left: 'center'
-    },
-    tooltip: {
-        trigger: 'axis'
-    },
-    legend: {
-        data: ['water level']
-    },
-    grid: {
-        left: '5%',
-        right: '5%',
-        bottom: '30%',
-        containLabel: true
-    },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: [],
-        name: 'Time'
-    },
-    yAxis: {
-        type: 'value', min: 0,
-        name: 'Water Level(m)',
-        nameLocation: 'middle',
-        nameGap: 50
-    },
-    series: [{
-        data: [],
-        type: 'line',
-        name: "Water Level",
-        symbolSize: 8,
-        smooth: true
-    }]
-};
-
 $(function () {
 
-    loadData("lutaizi", "level", false);
+    loadData("lutaizi", "level", false, levelOption);
+    loadData("lutaizi", "evaporation", false, evOption);
+    loadData("lutaizi", "rainfall", false, rainFallOption);
+    loadData("lutaizi", "flow", false, flowOption);
+    loadData("runheji", "rainfall", false, runheRainFallOption);
+    loadData("zhaopingtai", "flow", false, zhaoFlowOption);
+
+    $("#runheji-rainfall").hide();
+    $("#zhaopingtai-flow").hide();
+
+    $("#stationSelect").change(function () {
+        var stationName = $(this).val();
+        $(".charts").not("div[id^='" + stationName + "']").hide();
+        $("div[id^='" + stationName + "']").each(function () {
+            $(this).children().first().show();
+
+        });
+        $("div[id^='" + stationName + "']").show();
+    });
 
 });
 
-var handleData = function (data, minus, chartId) {
+var handleData = function (data, chartId, option) {
     var timeArray = [];
     var valueArray = [];
     var min = 0;
@@ -68,10 +42,11 @@ var handleData = function (data, minus, chartId) {
     myChart.setOption(option, true);
 };
 
-function loadData(stationName, property, isNeedReload) {
+function loadData(stationName, property, isNeedReload, option) {
     $.ajax({
         type: "get",
         url: "/service/dataLastDay",
+        async:false,
         data: {
             stationName: stationName,
             property: property,
@@ -79,12 +54,16 @@ function loadData(stationName, property, isNeedReload) {
         },
         dataType: "json",
         success: function (res) {
-            handleData(res, 0.5, "container");
+            handleData(res, stationName + "-" + property, option);
         }
     });
 }
 
 setInterval(function () {
-    console.log(111);
-    loadData("lutaizi", "level", false)
+    loadData("lutaizi", "level", false, levelOption);
+    loadData("lutaizi", "evaporation", false, evOption);
+    loadData("lutaizi", "rainfall", false, rainFallOption);
+    loadData("lutaizi", "flow", false, flowOption);
+    loadData("runheji", "rainfall", false, runheRainFallOption);
+    loadData("zhaopingtai", "flow", false, zhaoFlowOption);
 }, 30000);
