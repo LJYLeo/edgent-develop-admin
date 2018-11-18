@@ -21,9 +21,10 @@
         <div style="text-align: center">
             <label>Please choose station : </label>
             <select style="width:100px;height:30px;font-size:15px;" id="stationSelect">
-                <option value="lutaizi">lutaizi</option>
-                <option value="runheji">runheji</option>
-                <option value="zhaopingtai">zhaopingtai</option>
+                <option value="lutaizi">鲁台子</option>
+                <option value="runheji">润和集</option>
+                <option value="zhaopingtai">中平台</option>
+                <option value="hongzehu">洪泽湖</option>
             </select><br/>
         </div>
         <div id="lutaizi-level" class="charts" style="height: 500px"></div>
@@ -32,6 +33,9 @@
         <div id="lutaizi-flow" class="charts" style="height: 500px"></div>
         <div id="runheji-rainfall" class="charts" style="height: 500px"></div>
         <div id="zhaopingtai-flow" class="charts" style="height: 500px"></div>
+        <div id="hongzehu-level" class="charts" style="height: 500px"></div>
+        <div id="hongzehu-area" class="charts" style="height: 500px"></div>
+        <div id="hongzehu-volume" class="charts" style="height: 500px"></div>
     </body>
 
 </html>

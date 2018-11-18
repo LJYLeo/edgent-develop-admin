@@ -6,9 +6,15 @@ $(function () {
     loadData("lutaizi", "flow", false, flowOption);
     loadData("runheji", "rainfall", false, runheRainFallOption);
     loadData("zhaopingtai", "flow", false, zhaoFlowOption);
+    loadData("hongzehu", "level", false, hongzehuLevelOption);
+    loadData("hongzehu", "area", false, hongzehuAreaOption);
+    loadData("hongzehu", "volume", false, hongzehuVolumeOption);
 
     $("#runheji-rainfall").hide();
     $("#zhaopingtai-flow").hide();
+    $("#hongzehu-level").hide();
+    $("#hongzehu-area").hide();
+    $("#hongzehu-volume").hide();
 
     $("#stationSelect").change(function () {
         var stationName = $(this).val();
@@ -66,4 +72,7 @@ setInterval(function () {
     loadData("lutaizi", "flow", false, flowOption);
     loadData("runheji", "rainfall", false, runheRainFallOption);
     loadData("zhaopingtai", "flow", false, zhaoFlowOption);
+    loadData("hongzehu", "level", false, hongzehuLevelOption);
+    loadData("hongzehu", "area", false, hongzehuAreaOption);
+    loadData("hongzehu", "volume", false, hongzehuVolumeOption);
 }, 30000);

@@ -24,6 +24,7 @@ public class DataPersistService {
         codeMap.put("lutaizi", "50103100");
         codeMap.put("runheji", "50102350");
         codeMap.put("zhaopingtai", "50603000");
+        codeMap.put("hongzehu", "00100000");
     }
 
     public Map<String, Float> getData(String stationName, String property, boolean isNeedReload) {

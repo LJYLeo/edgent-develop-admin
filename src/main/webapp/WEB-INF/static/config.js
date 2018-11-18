@@ -267,3 +267,138 @@ var zhaoFlowOption = {
         smooth: true
     }]
 };
+
+var hongzehuLevelOption = {
+    title: {
+        // subtext: 'Water Level Monitoring Chart',
+        text: 'Water Level Monitoring Chart',
+        // text: 'Smart Edge Computing Service Platform Monitoring System',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['water level']
+    },
+    grid: {
+        left: '5%',
+        right: '5%',
+        // bottom: '30%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [],
+        name: 'Time'
+    },
+    yAxis: {
+        type: 'value', min: 0,
+        name: 'Water Level(m)',
+        nameLocation: 'middle',
+        nameGap: 50
+    },
+    series: [{
+        data: [],
+        type: 'line',
+        name: "Water Level",
+        symbolSize: 8,
+        smooth: true
+    }]
+};
+
+var hongzehuAreaOption = {
+    title: {
+        // subtext: 'Water Level Monitoring Chart',
+        text: 'Area Monitoring Chart',
+        // text: 'Smart Edge Computing Service Platform Monitoring System',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['area']
+    },
+    grid: {
+        left: '5%',
+        right: '5%',
+        // bottom: '30%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [],
+        name: 'Time'
+    },
+    yAxis: {
+        type: 'value', min: 0,
+        name: 'Area(km^2)',
+        nameLocation: 'middle',
+        nameGap: 50
+    },
+    series: [{
+        data: [],
+        type: 'line',
+        name: "Area",
+        symbolSize: 8,
+        smooth: true
+    }]
+};
+
+var hongzehuVolumeOption = {
+    title: {
+        // subtext: 'Water Level Monitoring Chart',
+        text: 'Volume Monitoring Chart',
+        // text: 'Smart Edge Computing Service Platform Monitoring System',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['area']
+    },
+    grid: {
+        left: '5%',
+        right: '5%',
+        // bottom: '30%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [],
+        name: 'Time'
+    },
+    yAxis: {
+        type: 'value', min: 0,
+        name: 'Volume(10^8m^3)',
+        nameLocation: 'middle',
+        nameGap: 50
+    },
+    series: [{
+        data: [],
+        type: 'line',
+        name: "Volume",
+        symbolSize: 8,
+        smooth: true
+    }]
+};
