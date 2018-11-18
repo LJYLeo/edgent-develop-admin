@@ -1,6 +1,7 @@
 var levelOption = {
     title: {
-        subtext: 'Water Level Monitoring Chart',
+        // subtext: 'Water Level Monitoring Chart',
+        text: 'Water Level Monitoring Chart',
         // text: 'Smart Edge Computing Service Platform Monitoring System',
         left: 'center'
     },
@@ -44,7 +45,8 @@ var levelOption = {
 
 var evOption = {
     title: {
-        subtext: 'Water Evaporation Monitoring Chart',
+        // subtext: 'Water Evaporation Monitoring Chart',
+        text: 'Evaporation Monitoring Chart',
         // text: 'Smart Edge Computing Service Platform Monitoring System',
         left: 'center'
     },
@@ -88,7 +90,8 @@ var evOption = {
 
 var rainFallOption = {
     title: {
-        subtext: 'Water Rainfall Monitoring Chart',
+        // subtext: 'Water Rainfall Monitoring Chart',
+        text: 'Rainfall Monitoring Chart',
         // text: 'Smart Edge Computing Service Platform Monitoring System',
         left: 'center'
     },
@@ -133,7 +136,8 @@ var rainFallOption = {
 
 var flowOption = {
     title: {
-        subtext: 'Water Flow Monitoring Chart',
+        text: 'Flow Monitoring Chart',
+        //subtext: 'Water Flow Monitoring Chart',
         // text: 'Smart Edge Computing Service Platform Monitoring System',
         left: 'center'
     },
@@ -177,7 +181,7 @@ var flowOption = {
 
 var runheRainFallOption = {
     title: {
-        subtext: 'Water Rainfall Monitoring Chart',
+        text: 'Rainfall Monitoring Chart',
         // text: 'Smart Edge Computing Service Platform Monitoring System',
         left: 'center'
     },
@@ -222,7 +226,7 @@ var runheRainFallOption = {
 
 var zhaoFlowOption = {
     title: {
-        subtext: 'Water Flow Monitoring Chart',
+        text: 'Flow Monitoring Chart',
         // text: 'Smart Edge Computing Service Platform Monitoring System',
         left: 'center'
     },

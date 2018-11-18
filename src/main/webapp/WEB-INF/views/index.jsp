@@ -24,7 +24,7 @@
                 <option value="lutaizi">lutaizi</option>
                 <option value="runheji">runheji</option>
                 <option value="zhaopingtai">zhaopingtai</option>
-            </select>
+            </select><br/>
         </div>
         <div id="lutaizi-level" class="charts" style="height: 500px"></div>
         <div id="lutaizi-evaporation" class="charts" style="height: 500px"></div>
